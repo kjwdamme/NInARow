@@ -24,10 +24,12 @@ class Board(val rows: Int, val columns: Int) {
   def sinkChecker(column: Int, player: Player): Unit = {
     val transposedBoard = board.transpose
     for (rowIndex <- 0 until transposedBoard.length) {
-      if (transposedBoard(rowIndex)(column - 1) != Player.NoPlayer) {
+      if (transposedBoard(column - 1)(rowIndex) != Player.NoPlayer) {
         board(rowIndex - 1)(column - 1) = player
+        return
       } else if (rowIndex == transposedBoard.length - 1) {
         board(rowIndex)(column - 1) = player
+        return
       }
     }
   }

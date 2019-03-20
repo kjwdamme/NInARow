@@ -26,6 +26,14 @@ class Game() {
     if ((player == Player.Player1 && gameState == GameState.Player1Turn) || (player == Player.Player2 && gameState == GameState.Player2Turn)) {
       board.sinkChecker(column, player)
 
+      if (player == Player.Player1) {
+        gameState = GameState.Player2Turn
+      } else if (player == Player.Player2) {
+        gameState = GameState.Player1Turn
+      } else {
+        throw new IllegalArgumentException
+      }
+
 //      for (rowIndex <- board.board.length) {
 //        for (columnIndex <- board.board(rowIndex).length) {
 //
